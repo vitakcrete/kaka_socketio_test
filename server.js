@@ -17,15 +17,15 @@ const PORT = process.env.PORT || 9000;
 io.on("connection", function(socket){
     socket.on("chatting", function(data){
         console.log(data)
+        socket.broadcast.emit("chatting", data)
         io.emit("chatting", data)
+        
+
     })
 })
-    
 
 
-
-
-server.listen(PORT, function(){
+    server.listen(PORT, function(){
     console.log(`server listening: ${PORT} `)
 })
 

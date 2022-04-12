@@ -14,6 +14,7 @@ sendButton.addEventListener("click", function(){
     
     
     socket.emit("chatting", param)
+
         
 })
 
