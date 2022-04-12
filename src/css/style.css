@@ -109,3 +109,24 @@ html, body{
     margin: 0 5px;
     flex : 7;
 }
+
+.time {
+    font-size: 10px;
+    margin: 0 5px;
+    
+}
+
+.sent {
+    flex-direction: row-reverse;
+    float: right;
+}
+
+.sent .message {
+    background : #e6a800;
+
+}
+
+.receive .message {
+    background: #fff;
+
+}

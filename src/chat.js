@@ -14,13 +14,34 @@ sendButton.addEventListener("click", function(){
     
     
     socket.emit("chatting", param)
-
+        
 })
 
 
 socket.on("chatting", function(data){
-    const li = document.createElement("li")
-    li.innerText = `${data.name}님이 ${data.msg}`;
-    chatList.appendChild(li)
-
+    const { name, msg, time} = data ;
+    const item = new LiModel(name, msg, time);
+    item.makeLi();
 })
+
+function LiModel(name,msg,time){
+    this.name = name;
+    this.msg = msg;
+    this.time = time;
+
+    this.makeLi = () => {
+        const li = document.createElement("li");
+        li.classList.add(nickname.value === this.name ? "sent" : "receive")
+        const dom = `
+        <span class="profile">
+            <span class="user">${this.name}</span>
+            <img class="image" src="https://placeimg.com/50/50/any" alt="any">
+        </span>
+        <span class="message">${this.msg}</span>
+        <span class="time">${this.time}</span>  
+        `
+        li.innerHTML = dom;
+        
+        chatList.appendChild(li);
+    }
+}
